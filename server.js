@@ -2,7 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const api = require('./api');
 
-const port = 3000;
+const env = require('node-env-file'); // .env file
+env(__dirname + '/.env');
+
+const port=process.env.PORT || 8080; 
 const app = express();
 
 app.listen(port, function () {
