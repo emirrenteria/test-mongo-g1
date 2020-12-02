@@ -2,13 +2,12 @@ var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
 
-const aws = require('aws-sdk');
-let environment = new aws.S3({
+let environment = {
     DBMONGOUSER: process.env.DBMONGOUSER,
     DBMONGOPASS: process.env.DBMONGOPASS,
     DBMONGOSERV:  process.env.DBMONGOSERV,
     DBMONGO: process.env.DBMONGO,
-});
+};
 
 var TaskModel = require('./task_schema');
 
