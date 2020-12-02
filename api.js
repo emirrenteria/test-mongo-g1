@@ -2,7 +2,15 @@ var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
 
-let environment = {
+let environment = null;
+
+if(!process.env.ON_HEROKU){
+    console.log("Cargando variables desde archivo");
+    const env = require('node-env-file'); // .env file
+    env(__dirname + '/.env');
+}
+
+environment = {
     DBMONGOUSER: process.env.DBMONGOUSER,
     DBMONGOPASS: process.env.DBMONGOPASS,
     DBMONGOSERV:  process.env.DBMONGOSERV,
